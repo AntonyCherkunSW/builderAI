@@ -41,8 +41,7 @@ class PostListInteractor {
                  let response = response as? HTTPURLResponse,
                  response.statusCode == 200 {
                    if let posts = self?.parseToPosts(data: data) {
-                      // self?.posts.append(contentsOf: posts)
-                       self?.output?.updated(posts: posts)// self!.posts)
+                       self?.output?.updated(posts: posts)
                    }
                }
              }

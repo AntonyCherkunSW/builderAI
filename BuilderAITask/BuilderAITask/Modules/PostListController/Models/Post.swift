@@ -57,6 +57,12 @@ struct Post {
     
     init(from hit: Hit) {
         title = hit.title
-        createdAt = hit.created_at
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        let date = dateFormatter.date(from: hit.created_at)!
+        dateFormatter.timeZone = TimeZone.current
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        createdAt = dateFormatter.string(from: date)
     }
 }
